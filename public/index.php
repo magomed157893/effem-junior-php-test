@@ -1,8 +1,6 @@
 <?php
 
-define('BASE_PATH', dirname(__DIR__));
-
-require_once(BASE_PATH . '/vendor/autoload.php');
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 use App\Utils\Request;
 use App\Utils\Router;

@@ -18,7 +18,7 @@ class Router
         $this->request = $request;
     }
 
-    public function handle()
+    public function handle(): void
     {
         $this->dispatcher = simpleDispatcher(function (RouteCollector $collector) {
             $collector->addRoute('POST', '/api/tasks', [TaskController::class, 'create']);
