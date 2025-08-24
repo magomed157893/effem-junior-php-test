@@ -21,6 +21,7 @@ class Task
         $description = $data['description'] ?? null;
         $status = $data['status'] ?? false;
 
+        Validator::check(Validator::canBeString($title), 'Title is must be string');
         Validator::check(Validator::notBlank($title), 'Title is cannot be blank');
         Validator::check(Validator::maxChars($title, 100), 'Title is cannot be longer than 100 characters');
         Validator::check(Validator::canBeString($description), 'Description is must be string');
