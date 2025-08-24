@@ -8,8 +8,6 @@ services:
       DB_NAME: effem
       DB_USER: junior
       DB_PASS: junior
-    volumes:
-      - .:/var/www/effem
     depends_on:
       - mysql
     networks:
