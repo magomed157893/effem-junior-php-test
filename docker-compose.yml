@@ -1,0 +1,50 @@
+services:
+  php:
+    container_name: effem-php
+    image: effem-php:latest
+    build: .
+    environment:
+      DB_HOST: mysql
+      DB_NAME: effem
+      DB_USER: junior
+      DB_PASS: junior
+    volumes:
+      - .:/var/www/effem
+    depends_on:
+      - mysql
+    networks:
+      - effem-network
+
+  nginx:
+    container_name: effem-nginx
+    image: nginx:stable
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/effem
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - effem-network
+
+  mysql:
+    container_name: effem-mysql
+    image: mysql:lts
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: effem
+    volumes:
+      - effem-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - effem-network
+
+volumes:
+  effem-data:
+    name: effem-data
+
+networks:
+  effem-network:
+    name: effem-network
+    driver: bridge
