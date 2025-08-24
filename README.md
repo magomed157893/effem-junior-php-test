@@ -3,14 +3,6 @@
 
 Task Manager API — это простой API для управления задачами, созданный в рамках тестового задания с использованием PHP, Nginx, Docker, MySQL и Swagger.
 
-## Используемые технологии
-- PHP
-- Nginx
-- Docker
-- Composer
-- MySQL
-- Swagger
-
 ## Начало работы
 Для запуска проекта необходим установленный Docker
 
