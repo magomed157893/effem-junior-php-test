@@ -77,6 +77,7 @@ class Task
 
                 switch ($field) {
                     case $fields[0]:
+                        Validator::check(Validator::canBeString($title), 'Title is must be string');
                         Validator::check(Validator::notBlank($value), 'Title is cannot be blank');
                         Validator::check(Validator::maxChars($value, 100), 'Title is cannot be longer than 100 characters');
                         break;
