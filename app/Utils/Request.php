@@ -69,8 +69,8 @@ class Request
 
     private function parseBody()
     {
-        $contentType = $this->getHeader('Content-Type');
-        if (strpos($contentType, 'application/json') !== false) {
+        $contentType = $this->getHeader('Content-Type') ?? '';
+        if (is_string($contentType) && strpos($contentType, 'application/json') !== false) {
             return json_decode(file_get_contents('php://input'), true) ?? [];
         }
         return $_POST;
