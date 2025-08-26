@@ -28,8 +28,13 @@ class Validator
         return mb_strlen($value) <= $n;
     }
 
-    public static function trueOrFalse(mixed $value)
+    public static function trueOrFalse(mixed &$value)
     {
-        return $value == 1 || $value == 0;
+        if (is_bool($value) || (is_numeric($value) && ($value === 1 || $value === 0))) {
+            $value = $value ? 1 : 0;
+            return true;
+        }
+
+        return false;
     }
 }

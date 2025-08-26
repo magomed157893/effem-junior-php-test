@@ -33,7 +33,7 @@ class Task
         $stmt->execute([
             ':title' => $title,
             ':description' => $description,
-            ':status' => $status ? 1 : 0
+            ':status' => $status
         ]);
 
         return (int)$this->conn->lastInsertId();
